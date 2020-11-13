@@ -39,16 +39,21 @@ const createNode = async () => {
 
     await node.pubsub.subscribe(topic)
 
-    process.stdin.on('readable', () => {
+    setInterval(() => {
+        node.pubsub.publish(topic, u8.fromString('babooshka1'))
+    }, 1000)
+
+/*     process.stdin.on('readable', () => {
 
         let variable = process.stdin.read();
 
         variable = variable.toString().replace(/\n/, "");
         variable = variable.replace(/\r/, "");
 
+
         node.pubsub.publish(topic, u8.fromString(variable))
 
-    });
+    }); */
 
 })()
 
